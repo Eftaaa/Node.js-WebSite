@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% /* Set the title of the page */ %>
+  <% var pageTitle = 'Chestionar online' %>
+  <meta charset="utf-8">
+  <title><%= pageTitle %></title>
+  <link rel="stylesheet" type="text/css" href="../stil.css">
+  
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/chestionar">Chestionar</a></li>
+        <% if (username == null) { %>
+          <li><a href="/autentificare">Login</a></li>
+        <% } %>
+        <% if (username != null && typeof admin !== 'undefined' && admin) { %>
+          <li><a href="/admin">Admin</a></li>
+        <% } %>
+      </ul>
+      <% if (username != null) { %>
+        <h1>Bine ai venit, <%= username %>!</h1>
+        <p>Autentificat ca <b><%= username %></b> | <a href="/autentificare">Deconectare</a></p>
+      <% } %>
+    </nav>
+  </header>
+  <main>
+    
+    <%- body %>
+  </main>
+  <footer>
+    <p>&copy; 2023 Eftasiu David.</p>
+  </footer>
+</body>
+</html>

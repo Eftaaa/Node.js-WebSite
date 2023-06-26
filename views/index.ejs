@@ -1,0 +1,33 @@
+<a href="/vizualizare-cos" class="button">Vizualizare Cos</a>
+<div class="button-container">
+  <button onclick="window.location.href='/creare-bd'" id="create-db-btn" class="button">Creare BD</button>
+  <button onclick="window.location.href='/inserare-bd'"  id="load-db-btn" class="button">Încarcare BD</button>
+  
+   
+  </div>
+  <h1>Product List</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <% if (authenticated) { %>
+        <th>Action</th>
+      <% } %>
+    </tr>
+    <% products.forEach(product => { %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.nume %></td>
+        <td><%= product.pret %></td>
+        <% if (authenticated) { %>
+            <td>
+              <form method="POST" action="/adaugare_cos">
+                <input type="hidden" name="id" value="<%= product.id %>">
+                <button type="submit">Adaugă în coș</button>
+              </form>
+            </td>
+          <% } %>
+      </tr>
+    <% }); %>
+  </table>
